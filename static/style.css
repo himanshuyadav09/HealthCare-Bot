@@ -1,0 +1,179 @@
+/* Global settings */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #d4fc79, #96e6a1);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    overflow: hidden;
+    text-align: center;
+    color: #333;
+}
+
+.container {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+}
+
+/* Heading */
+h2 {
+    font-size: 2.2em;
+    color: #2d6a4f;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s;
+}
+
+/* Paragraphs */
+p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 10px 0;
+    text-align: left;
+}
+
+/* Strong text */
+strong {
+    color: #1b4332;
+}
+
+/* List for precautions */
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    margin: 10px 0 20px;
+}
+
+li {
+    background: #e9f5f2;
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #333;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideIn 0.6s ease forwards;
+    animation-delay: calc(0.2s + (var(--i) * 0.1s));
+}
+
+/* Form Inputs */
+input[type="text"], input[type="button"] {
+    margin-top: 20px;
+    width: 300px;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type="text"] {
+    background: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+input[type="button"] {
+    background: #52b788;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+input[type="button"]:hover {
+    background: #40916c;
+    transform: scale(1.05);
+}
+
+/* General buttons */
+button, a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #52b788;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    transition: background 0.3s ease, transform 0.3s ease;
+    border: none;
+}
+
+button:hover, a:hover {
+    background: #40916c;
+    transform: scale(1.05);
+}
+
+/* Suggestions (tags) */
+.suggestions {
+    margin-top: 30px;
+}
+
+.tag {
+    display: inline-block;
+    background: white;
+    color: #4CAF50;
+    padding: 8px 14px;
+    border-radius: 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.tag:hover {
+    background: #4CAF50;
+    color: white;
+}
+
+/* Loader spinner */
+#loader {
+    display: none;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #4CAF50;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 30px auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

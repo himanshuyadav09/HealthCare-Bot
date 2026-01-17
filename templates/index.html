@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Chatbot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>🩺 Describe Your Symptoms</h2>
+
+    <form id="symptomForm" method="POST" action="/predict">
+        <input type="text" name="symptoms" id="symptomsInput" placeholder="e.g., headache, cough" required><br>
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
+        <input type="button" value="Submit" onclick="getLocationAndSubmit()">
+    </form>
+
+    <div id="loader"></div>
+
+    <div class="suggestions">
+        <!-- Adding 6 suggestions -->
+        <div class="tag" onclick="addSymptom('fever')">Fever</div>
+        <div class="tag" onclick="addSymptom('headache')">Headache</div>
+        <div class="tag" onclick="addSymptom('body pain')">Body Pain</div>
+        <div class="tag" onclick="addSymptom('breathing problem')">Breathing Problem</div>
+        <div class="tag" onclick="addSymptom('cough')">Cough</div>
+        <div class="tag" onclick="addSymptom('chest pain')">Chest Pain</div>
+        <!-- End of added suggestions -->
+    </div>
+</div>
+
+<script>
+    function addSymptom(symptom) {
+        let input = document.getElementById('symptomsInput');
+        input.value = input.value + symptom + ', ';
+    }
+
+    function getLocationAndSubmit() {
+        document.getElementById('loader').style.display = "block"; // Show spinner
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                document.getElementById('latitude').value = position.coords.latitude;
+                document.getElementById('longitude').value = position.coords.longitude;
+                document.getElementById('symptomForm').submit();
+            }, function() {
+                document.getElementById('symptomForm').submit();
+            });
+        } else {
+            document.getElementById('symptomForm').submit();
+        }
+    }
+</script>
+
+</body>
+</html>
