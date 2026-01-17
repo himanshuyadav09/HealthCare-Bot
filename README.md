@@ -63,5 +63,4 @@ All datasets are **cleaned, normalized, and medically structured** to improve ac
 
 ---
 
-## 📁 Project Structure
 
